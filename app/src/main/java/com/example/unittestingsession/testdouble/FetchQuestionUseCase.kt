@@ -21,7 +21,6 @@ class FetchQuestionUseCase(
                 is QuestionService.ServiceResult.Success -> {
                     val question = serviceResult.question
                     questionCache.cacheQuestion(question)
-                    questionAnalyticManager.logSuccess()
                     Result.Success(question)
                 }
                 is QuestionService.ServiceResult.GeneralError -> {
