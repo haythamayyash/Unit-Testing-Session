@@ -3,7 +3,8 @@ package com.example.unittestingsession.testdouble
 
 class FetchQuestionUseCase(
     private val questionService: QuestionService,
-    private val questionCache: QuestionCache
+    private val questionCache: QuestionCache,
+    private val questionAnalyticManager: QuestionAnalyticManager
 ) {
 
     sealed class Result {
@@ -20,9 +21,11 @@ class FetchQuestionUseCase(
                 is QuestionService.ServiceResult.Success -> {
                     val question = serviceResult.question
                     questionCache.cacheQuestion(question)
+                    questionAnalyticManager.logSuccess()
                     Result.Success(question)
                 }
                 is QuestionService.ServiceResult.GeneralError -> {
+                    questionAnalyticManager.logFailure()
                     Result.NetworkError
                 }
                 else -> {
