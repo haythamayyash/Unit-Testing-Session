@@ -15,8 +15,8 @@ class ConflictTimeDetector {
      */
     @Throws(ParseException::class)
     fun hasTimeConflict(timeInterval1: TimeInterval, timeInterval2: TimeInterval): Boolean {
-        return parser.parse(timeInterval1.endTime) >= parser.parse(timeInterval2.startTime) &&
-                parser.parse(timeInterval1.startTime) <= parser.parse(timeInterval2.endTime)
+        return parser.parse(timeInterval1.endTime) > parser.parse(timeInterval2.startTime) &&
+                parser.parse(timeInterval1.startTime) < parser.parse(timeInterval2.endTime)
     }
 }
 
