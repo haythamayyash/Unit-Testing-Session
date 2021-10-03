@@ -9,6 +9,6 @@ interface QuestionService {
         object ServerError : ServiceResult()
     }
 
-    @Throws(Exception::class)
+    @Throws(NetworkErrorException::class)
     fun getQuestion(id: String): ServiceResult
 }
