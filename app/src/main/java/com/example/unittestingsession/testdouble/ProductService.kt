@@ -1,14 +1,14 @@
 package com.example.unittestingsession.testdouble
 
 
-interface QuestionService {
+interface ProductService {
 
     sealed class ServiceResult {
-        data class Success(val question: Question) : ServiceResult()
+        data class Success(val product: Product) : ServiceResult()
         object GeneralError : ServiceResult()
         object ServerError : ServiceResult()
     }
 
     @Throws(NetworkErrorException::class)
-    fun getQuestion(id: String): ServiceResult
+    fun getProduct(id: String): ServiceResult
 }

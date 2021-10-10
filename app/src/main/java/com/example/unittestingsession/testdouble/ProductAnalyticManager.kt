@@ -1,5 +1,5 @@
 package com.example.unittestingsession.testdouble
 
-interface QuestionAnalyticManager {
+interface ProductAnalyticManager {
     fun logFailure()
 }
